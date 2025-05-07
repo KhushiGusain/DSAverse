@@ -62,7 +62,7 @@ export default function Home() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Feature Highlights</h2>
             <p className="text-base md:text-lg text-gray-600">
-              Discover the essential tools to elevate your coding journey with DSAverse's intelligent dashboard.
+              Discover the essential tools to elevate your coding journey with DSAverses intelligent dashboard.
             </p>
         </div>
 
@@ -138,7 +138,7 @@ export default function Home() {
               <div className="lg:w-1/2 space-y-4">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Skill Gap Analyzer</h3>
                 <p className="text-base text-gray-600 leading-relaxed">
-                  Don't just study, evolve! Our analyzer finds your weak spots and guides you to improvement.
+                  Dont just study, evolve! Our analyzer finds your weak spots and guides you to improvement.
                 </p>
                 <Link href="/signup" 
                   className="inline-flex items-center px-5 py-2 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">

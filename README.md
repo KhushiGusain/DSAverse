@@ -1,3 +1,33 @@
+# 🚀 DSAverse – AI-Powered DSA Learning Assistant  
+
+**DSAverse** is an interactive platform designed to help students master **Data Structures & Algorithms (DSA)** with the power of **AI**.  
+It combines real-world coding practice with personalized AI assistance, explanations, and roadmaps to make interview prep efficient and engaging.  
+
+🔗 **Live Demo (if hosted)**: https://dsaverse-1k1e.vercel.app/
+🔗 **Portfolio Link**: [https://khushigusain.dev/](https://khushigusain.dev/)  
+
+---
+
+## ✨ Features  
+
+- 🤖 **AI-Powered Assistance** – Get instant problem explanations, hints, and step-by-step breakdowns.  
+- 📚 **DSA Problem Practice** – Covers key patterns: sliding window, graphs, dynamic programming, trees, heaps, etc.  
+- 📊 **Progress Tracking** – Track solved problems, categories, and progress over time.  
+- 🔑 **Authentication** – Secure login/signup system to save user progress.  
+- 📂 **Organized Roadmap** – Beginner → Intermediate → Advanced levels structured for interviews.  
+- 🌐 **Responsive UI** – Clean, modern, and optimized for desktop & mobile.  
+
+---
+
+## 🛠 Tech Stack  
+
+- **Frontend:** Next.js, React, Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** PostgreSQL  
+- **AI Integration:** OpenAI API  
+- **Deployment:** Vercel (Frontend)
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

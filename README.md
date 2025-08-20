@@ -3,7 +3,7 @@
 **DSAverse** is an interactive platform designed to help students master **Data Structures & Algorithms (DSA)** with the power of **AI**.  
 It combines real-world coding practice with personalized AI assistance, explanations, and roadmaps to make interview prep efficient and engaging.  
 
-🔗 **Live Demo (if hosted)**: https://dsaverse-1k1e.vercel.app/
+🔗 **Live Demo**: https://dsaverse-1k1e.vercel.app/
 🔗 **Portfolio Link**: [https://khushigusain.dev/](https://khushigusain.dev/)  
 
 ---

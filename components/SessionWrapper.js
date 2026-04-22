@@ -5,7 +5,7 @@ import {SessionProvider} from "next-auth/react"
 
 const SessionWrapper = ({children}) => {
   return (
-    <SessionProvider>
+    <SessionProvider refetchOnWindowFocus={false} refetchInterval={0}>
         {children}
     </SessionProvider>
   )

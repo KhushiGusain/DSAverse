@@ -3,16 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const {data: session} = useSession();
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
-  useEffect(()=>{
-    if(session){
-      redirect("/private/dashboard");
+  useEffect(() => {
+    router.prefetch("/login");
+    router.prefetch("/signup");
+
+    if (status === "authenticated" && session) {
+      router.replace("/private/dashboard");
     }
-  })
+  }, [router, session, status]);
+
+  if (status === "loading" || status === "authenticated") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
+        <div className="text-blue-600 font-medium">Loading...</div>
+      </div>
+    );
+  }
 
   return(
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">

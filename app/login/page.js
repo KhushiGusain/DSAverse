@@ -11,17 +11,15 @@ import validator from 'validator'
 import { motion } from 'framer-motion'
 
 const Login = () => {
-    const { data: session } = useSession()
+    const { status } = useSession()
     const [form, setForm] = useState({ email: "", password: "" })
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
-        if (session) {
-            router.push("/private/dashboard")
-        }
-    }, [session, router])
+        router.prefetch("/private/dashboard")
+    }, [router])
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -52,7 +50,8 @@ const Login = () => {
             })
 
             if (res?.ok) {
-                router.push('/private/dashboard')
+                router.replace('/private/dashboard')
+                router.refresh()
             } else {
                 setError("Invalid email or password")
             }
@@ -61,6 +60,14 @@ const Login = () => {
         } finally {
             setIsLoading(false)
         }
+    }
+
+    if (status === "authenticated") {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex justify-center items-center p-4">
+                <p className="text-slate-600 font-medium">Redirecting...</p>
+            </div>
+        )
     }
 
     return (

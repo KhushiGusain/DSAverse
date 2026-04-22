@@ -163,7 +163,7 @@ const Dashboard = () => {
                         </div>
                         
                         <Link 
-                            href="/private/chat"
+                            href="/private/learngpt"
                             className="group flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-medium rounded-lg text-sm px-4 py-2.5"
                         >
                             Open Assistant
@@ -199,7 +199,7 @@ const Dashboard = () => {
                         </div>
                         
                         <Link 
-                            href="/private/skill-gap"
+                            href="/private/skillgap"
                             className="group flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 transition-all duration-300 font-medium rounded-lg text-sm px-4 py-2.5"
                         >
                             Analyze JD

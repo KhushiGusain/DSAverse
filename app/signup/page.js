@@ -11,17 +11,15 @@ import { useSession } from 'next-auth/react'
 import validator from 'validator'
 
 const Signup = () => {
-    const { data: session } = useSession()
+    const { status } = useSession()
     const [form, setForm] = useState({ name: "", email: "", password: "" })
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
-        if (session) {
-            router.push("/private/dashboard")
-        }
-    }, [session, router])
+        router.prefetch("/private/dashboard")
+    }, [router])
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -61,12 +59,17 @@ const Signup = () => {
             });
             
             if (res.ok) {
-                await signIn("credentials", {
+                const loginResult = await signIn("credentials", {
                     email: form.email,
                     password: form.password,
                     redirect: false,
                 })
-                router.push('/private/dashboard')
+                if (loginResult?.ok) {
+                    router.replace('/private/dashboard')
+                    router.refresh()
+                } else {
+                    setError("Account created, but login failed. Please sign in manually.")
+                }
             } else {
                 const data = await res.json()
                 setError(data.error || "Signup failed!")
@@ -76,6 +79,14 @@ const Signup = () => {
         } finally {
             setIsLoading(false)
         }
+    }
+
+    if (status === "authenticated") {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center p-4">
+                <p className="text-blue-700 font-medium">Redirecting...</p>
+            </div>
+        )
     }
 
     return (

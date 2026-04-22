@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { IoPersonSharp } from "react-icons/io5";
 import { RiDashboardLine, RiRoadMapLine, RiRobot2Line, RiFileListLine, RiUserSearchLine, RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { motion, AnimatePresence } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const {data: session, status} = useSession();
@@ -14,6 +14,7 @@ const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,8 +41,22 @@ const Navbar = () => {
     { name: 'Skill Gap', href: '/private/skillgap', icon: RiUserSearchLine },
   ];
 
+  useEffect(() => {
+    if (!session) return;
+
+    navigation.forEach((item) => {
+      router.prefetch(item.href);
+    });
+  }, [router, session]);
+
   if (status === "loading") {
-    return null;
+    return (
+      <nav className="fixed w-full z-50 bg-gradient-to-r from-[#1a1c2e] to-[#2d1b69]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-16" />
+        </div>
+      </nav>
+    );
   }
 
   return (
@@ -151,7 +166,7 @@ const Navbar = () => {
                         <p className="text-xs text-gray-400">{session.user?.email}</p>
                       </div>
                       <button
-                        onClick={() => signOut()}
+                        onClick={() => signOut({ callbackUrl: "/", redirect: true })}
                         className="w-full cursor-pointer px-4 py-2 text-left text-sm text-gray-300 hover:bg-white/10 transition-colors duration-200"
                       >
                         Sign out
